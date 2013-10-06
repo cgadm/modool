@@ -61,30 +61,34 @@ MODOOL = {
                 $('#modool-back').after($('#modool_tmpl').tmpl(params.steps[0]));
                 $('#modool').css({'min-width':params.steps[0].width,'min--height':params.steps[0].height});
                 $('#modool-body').html($(params.steps[0].tmpl).tmpl(params.steps[0].data));
-                if(typeof(params.steps[0].text) == 'undefined'){
-                    $('#modool-head').prepend($('#modool_btn_close_tmpl').tmpl(MODOOL.text.single)); // use default text
-                }else{
-                    if(typeof(params.steps[0].text.left_btn) == 'undefined'){
+                if(typeof(params.steps[0].lbtn) == 'undefined' || typeof(params.steps[0].lbtn) == false){
+                    if(typeof(params.steps[0].text) == 'undefined'){
                         $('#modool-head').prepend($('#modool_btn_close_tmpl').tmpl(MODOOL.text.single)); // use default text
                     }else{
-                        $('#modool-head').prepend($('#modool_btn_close_tmpl').tmpl(params.steps[0].text)); // use custom text
+                        if(typeof(params.steps[0].text.left_btn) == 'undefined'){
+                            $('#modool-head').prepend($('#modool_btn_close_tmpl').tmpl(MODOOL.text.single)); // use default text
+                        }else{
+                            $('#modool-head').prepend($('#modool_btn_close_tmpl').tmpl(params.steps[0].text)); // use custom text
+                        }
                     }
                 }
-                if(typeof(params.steps[0].text) == 'undefined'){
-                    if(params.steps.length > 1){ // more than one - use next btn
-                        $('#modool-head').prepend($('#modool_btn_next_tmpl').tmpl(MODOOL.text.multi)); // use default text
-                    }else{ // only one - use action btn
-                        $('#modool-head').prepend($('#modool_btn_action_tmpl').tmpl(MODOOL.text.single)); // use default text
-                    }
-                }else{
-                    if(typeof(params.steps[0].text.right_btn) == 'undefined'){
+                if(typeof(params.steps[0].rbtn) == 'undefined' || typeof(params.steps[0].rbtn) == false){
+                    if(typeof(params.steps[0].text) == 'undefined'){
                         if(params.steps.length > 1){ // more than one - use next btn
                             $('#modool-head').prepend($('#modool_btn_next_tmpl').tmpl(MODOOL.text.multi)); // use default text
                         }else{ // only one - use action btn
                             $('#modool-head').prepend($('#modool_btn_action_tmpl').tmpl(MODOOL.text.single)); // use default text
                         }
                     }else{
-                        $('#modool-head').prepend($('#modool_btn_next_tmpl').tmpl(params.steps[0].text)); // use custom text
+                        if(typeof(params.steps[0].text.right_btn) == 'undefined'){
+                            if(params.steps.length > 1){ // more than one - use next btn
+                                $('#modool-head').prepend($('#modool_btn_next_tmpl').tmpl(MODOOL.text.multi)); // use default text
+                            }else{ // only one - use action btn
+                                $('#modool-head').prepend($('#modool_btn_action_tmpl').tmpl(MODOOL.text.single)); // use default text
+                            }
+                        }else{
+                            $('#modool-head').prepend($('#modool_btn_next_tmpl').tmpl(params.steps[0].text)); // use custom text
+                        }
                     }
                 }
                 $('.modool-btn-right').attr('rel',0); // set right button rel = 0
@@ -295,6 +299,7 @@ $(document).ready(function(){
                 },
                 'data':testData,
                 'tmpl':'#testing_template_1',
+                'rbtn':false,
                 'lbtn_callback':function(){ // additional fn
                     console.log('first callback');
                 },
@@ -325,7 +330,6 @@ $(document).ready(function(){
                 }
             }
             ],
-            width:'600px',
             css_classes:'something something2'
         },function(){
             // do something
