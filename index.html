@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+    <title>MODOOL</title>
+    <script src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery.tmpl.min.js"></script>
+    <script src="js/su.modool.js"></script>
+    <link href="css/su.modool.css" type="text/css" rel="stylesheet" />
+    <script id="modool_tmpl" type="text/x-jquery-tmpl">
+        <div id="modool-wrap">
+            <div id="modool">
+                <div id="modool-head" class="centerme clearfix">
+                    <div id="modool-title">${title}</div>
+                </div>
+                <div id="modool-body" class="clearfix"></div>
+            </div>
+        </div>
+    </script>
+
+    <script id="modool_btn_close_tmpl" type="text/x-jquery-tmpl">
+        <a id="modool-close" class="modool-btn modool-btn-left drkgrey" href="javascript:void(0);">${lbtn}</a>
+    </script>
+    <script id="modool_btn_action_tmpl" type="text/x-jquery-tmpl">
+        <a id="modool-action" class="modool-btn modool-btn-right blue" href="javascript:void(0);">${rbtn}</a>
+    </script>
+    <script id="modool_btn_next_tmpl" type="text/x-jquery-tmpl">
+        <a id="modool-next" class="modool-btn modool-btn-right grey" href="javascript:void(0);">${rbtn} &raquo;</a>
+    </script>
+    <script id="modool_btn_prev_tmpl" type="text/x-jquery-tmpl">
+        <a id="modool-prev" class="modool-btn modool-btn-left grey" href="javascript:void(0);">&laquo; ${lbtn}</a>
+    </script>
+
+    <script id="testing_template_1" type="text/x-jquery-tmpl">
+        <div id="lws" class="zebra zebraSINGLE clearfix">
+            1st SCREEN<br>
+            {{each media}}
+            <div rel="${this.id}">
+                ${this.type} ${this.id}: <a href="${this.url}">${this.title}</a><br>
+            </div><br>
+            {{/each}}
+        </div>
+    </script>
+    <script id="testing_template_2" type="text/x-jquery-tmpl">
+        <div id="lws" class="zebra zebraSINGLE clearfix">
+            2nd SCREEN<br>
+            {{each media}}
+            <div rel="${this.id}">
+                ${this.type} ${this.id}: <a href="${this.url}">${this.title}</a><br>
+            </div><br>
+            {{/each}}
+        </div>
+    </script>
+    <script id="testing_template_3" type="text/x-jquery-tmpl">
+        <div id="lws" class="zebra zebraSINGLE clearfix">
+            2nd SCREEN<br>
+            {{each media}}
+            <div rel="${this.id}">
+                ${this.type} ${this.id}: <a href="${this.url}">${this.title}</a><br>
+            </div><br>
+            {{/each}}
+        </div>
+    </script>
+</head>
+<body>
+    <p><strong>Multipurpose Overlay System with options for multi-step "forms"</strong><p>
+    <p>Modool uses steps to represent each "screen" of the overlay.<br>If the step array is one,then the overlay will behave as a single overlay.<br>If the step array is greater than one, the overlay will behave as a multi-step overlay.<br>There are many configurations, but only "tmpl" is required, for the overlay to work.</p>
+    <a id="overlayDefault" href="javascript:void(0);">Click Here</a>
+</body>
+</html>
