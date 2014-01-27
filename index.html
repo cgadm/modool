@@ -44,22 +44,22 @@
                 steps:[{
                     'title':'Testing Overlay 1',
                     'text':{
-                        'right_btn':'Create Call Out'
+                        'rbtn':'Create Call Out'
                     },
                     'data':testData,
                     'tmpl':'#testing_template_1',
-                    //'rbtn':false,
                     'lbtn_callback':function(){ // additional fn
                         console.log('first callback');
                         $.fn.modool.close();
                     },
                     'tmpl_callback':function(){ // main callback after tmpl loads
                         console.log('first callback');
-                    }
+                    },
+                    css_classes:'something something2'
                 },{
                     'title':'Testing Overlay 2',
                     'text':{
-                        'left_btn':'Manage Call Outs'
+                        'lbtn':'Manage Call Outs'
                     },
                     'data':testData2,
                     'tmpl':'#testing_template_2',
@@ -68,7 +68,7 @@
                 },{
                     'title':'Testing Overlay 3',
                     'text':{
-                        'right_btn':'Save Call Out'
+                        'rbtn':'Save Call Out'
                     },
                     'data':testData3,
                     'tmpl':'#testing_template_3',
@@ -78,9 +78,7 @@
                         console.log('action function goes here');
                         $.fn.modool.close();
                     }
-                }
-                ],
-                css_classes:'something something2'
+                }]
             });
         });
     </script>
