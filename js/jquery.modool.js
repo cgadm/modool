@@ -261,7 +261,8 @@
             }
         };
         return this.each(function(){
-            $(this).unbind().click(function(){
+            $(this).unbind().click(function(e){
+                e.preventDefault();
                 methods.init(settings,function(){
                     $.fn.modool.update(settings,0);
                     $('#modool').fadeIn(250);
