@@ -48,7 +48,8 @@ There are many configurations, but only "tmpl" is required, for the overlay to w
                     },
                     'tmpl_callback':function(){ // main callback after tmpl loads
                         console.log('first callback');
-                    }
+                    },
+                    css_classes:'something something2'
                 },{
                     'title':'Testing Overlay 2',
                     'text':{
@@ -71,7 +72,5 @@ There are many configurations, but only "tmpl" is required, for the overlay to w
                         console.log('action function goes here');
                         $.fn.modool.close();
                     }
-                }
-                ],
-                css_classes:'something something2'
+                }]
             });
