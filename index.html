@@ -3,32 +3,8 @@
     <title>MODOOL</title>
     <script src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="js/jquery.tmpl.min.js"></script>
-    <script src="js/su.modool.js"></script>
-    <link href="css/su.modool.css" type="text/css" rel="stylesheet" />
-    <script id="modool_tmpl" type="text/x-jquery-tmpl">
-        <div id="modool-wrap">
-            <div id="modool">
-                <div id="modool-head" class="centerme clearfix">
-                    <div id="modool-title">${title}</div>
-                </div>
-                <div id="modool-body" class="clearfix"></div>
-            </div>
-        </div>
-    </script>
-
-    <script id="modool_btn_close_tmpl" type="text/x-jquery-tmpl">
-        <a id="modool-close" class="modool-btn modool-btn-left drkgrey" href="javascript:void(0);">${lbtn}</a>
-    </script>
-    <script id="modool_btn_action_tmpl" type="text/x-jquery-tmpl">
-        <a id="modool-action" class="modool-btn modool-btn-right blue" href="javascript:void(0);">${rbtn}</a>
-    </script>
-    <script id="modool_btn_next_tmpl" type="text/x-jquery-tmpl">
-        <a id="modool-next" class="modool-btn modool-btn-right grey" href="javascript:void(0);">${rbtn} &raquo;</a>
-    </script>
-    <script id="modool_btn_prev_tmpl" type="text/x-jquery-tmpl">
-        <a id="modool-prev" class="modool-btn modool-btn-left grey" href="javascript:void(0);">&laquo; ${lbtn}</a>
-    </script>
-
+    <script src="js/jquery.modool.js"></script>
+    <link href="css/jquery.modool.css" type="text/css" rel="stylesheet" />
     <script id="testing_template_1" type="text/x-jquery-tmpl">
         <div id="lws" class="zebra zebraSINGLE clearfix">
             1st SCREEN<br>
@@ -51,13 +27,62 @@
     </script>
     <script id="testing_template_3" type="text/x-jquery-tmpl">
         <div id="lws" class="zebra zebraSINGLE clearfix">
-            2nd SCREEN<br>
+            3nd SCREEN<br>
             {{each media}}
             <div rel="${this.id}">
                 ${this.type} ${this.id}: <a href="${this.url}">${this.title}</a><br>
             </div><br>
             {{/each}}
         </div>
+    </script>
+    <script>
+        testData = {media:{0:{'title':'Test Media','id':123456,'url':'http://something.com','type':'video'}}}
+        testData2 = {media:{0:{'title':'Test Media 2','id':1234567,'url':'http://else.com','type':'photo'}}}
+        testData3 = {media:{0:{'title':'Test Media 3','id':12345678,'url':'http://if.com','type':'postcard'}}}
+        $(document).ready(function(){
+            $('#overlayDefault').modool({
+                steps:[{
+                    'title':'Testing Overlay 1',
+                    'text':{
+                        'right_btn':'Create Call Out'
+                    },
+                    'data':testData,
+                    'tmpl':'#testing_template_1',
+                    //'rbtn':false,
+                    'lbtn_callback':function(){ // additional fn
+                        console.log('first callback');
+                        $.fn.modool.close();
+                    },
+                    'tmpl_callback':function(){ // main callback after tmpl loads
+                        console.log('first callback');
+                    }
+                },{
+                    'title':'Testing Overlay 2',
+                    'text':{
+                        'left_btn':'Manage Call Outs'
+                    },
+                    'data':testData2,
+                    'tmpl':'#testing_template_2',
+                    'width':'100%',
+                    'height':'100%'
+                },{
+                    'title':'Testing Overlay 3',
+                    'text':{
+                        'right_btn':'Save Call Out'
+                    },
+                    'data':testData3,
+                    'tmpl':'#testing_template_3',
+                    'width':'500px',
+                    'height':'200px',
+                    'rbtn_callback':function(){  // additional fn
+                        console.log('action function goes here');
+                        $.fn.modool.close();
+                    }
+                }
+                ],
+                css_classes:'something something2'
+            });
+        });
     </script>
 </head>
 <body>

@@ -10,6 +10,4 @@
 .modool-btn.blue {background:#00aeeb;color: #FFF;text-shadow: 0 -1px 0 #5D95D7;}
 .modool-btn.grey {background:lightGrey;color: #4C4C4C;text-shadow: 1px 1px 1px whiteSmoke;}
 .modool-btn.drkgrey {background: #333;color: #efefef;}
-.modool-x {}
-#modool-body {overflow-y: auto;}
-.modool-foot {}
+#modool-body {overflow-y: auto;overflow-x: hidden;}
